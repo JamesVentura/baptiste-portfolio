@@ -66,7 +66,7 @@ export function Hero() {
           className="absolute inset-x-0 bottom-6 z-20 flex items-center justify-end gap-2 px-6 text-xs uppercase tracking-widest text-stone md:px-10"
         >
           <span className="h-8 w-px bg-stone-light" />
-          Scroll down
+          Faire défiler
         </motion.a>
       </section>
     </div>

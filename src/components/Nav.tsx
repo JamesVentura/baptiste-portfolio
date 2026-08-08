@@ -60,7 +60,7 @@ export function Nav() {
           href={toHash('#contact')}
           className="hidden rounded-full border border-ink px-5 py-2 text-sm uppercase tracking-widest transition-colors hover:bg-ink hover:text-paper md:inline-block"
         >
-          Hire me
+          Me contacter
         </a>
 
         <button
@@ -104,7 +104,7 @@ export function Nav() {
               transition={{ delay: 0.15 + nav.length * 0.06, duration: 0.4 }}
               className="mt-4 inline-block w-fit rounded-full border border-ink px-6 py-3 text-sm uppercase tracking-widest"
             >
-              Hire me
+              Me contacter
             </motion.a>
           </motion.div>
         )}

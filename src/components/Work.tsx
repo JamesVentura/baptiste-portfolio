@@ -81,7 +81,7 @@ export function Work() {
     <section id="work" className="px-6 pb-8 pt-24 md:px-10 md:pb-10 md:pt-32">
       <Reveal>
         <div className="mb-2 flex items-center justify-between border-b border-line pb-6">
-          <p className="text-sm uppercase tracking-widest text-stone">Selected Works</p>
+          <p className="text-sm uppercase tracking-widest text-stone">Projets sélectionnés</p>
           <span className="text-sm uppercase tracking-widest text-stone">
             {String(visibleCount).padStart(2, '0')} / {String(projects.length).padStart(2, '0')} projets
           </span>
@@ -123,7 +123,7 @@ export function Work() {
               onClick={() => setShowAll((v) => !v)}
               className="group inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-ink transition-colors hover:text-stone"
             >
-              {showAll ? 'View less Projects' : 'View all Projects'}
+              {showAll ? 'Voir moins de projets' : 'Voir tous les projets'}
               <ArrowUpRight
                 className={`size-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 ${showAll ? 'rotate-180' : ''}`}
               />

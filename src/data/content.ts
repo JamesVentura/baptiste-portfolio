@@ -40,8 +40,8 @@ export const profile = {
 // href en ancre ("#about") : le composant Nav se charge de les transformer
 // en "/#about" quand on n'est pas sur la page d'accueil.
 export const nav = [
-  { label: 'About', href: '#about' },
-  { label: 'Work', href: '#work' },
+  { label: 'À propos', href: '#about' },
+  { label: 'Projets', href: '#work' },
   { label: 'Contact', href: '#contact' },
 ]
 
@@ -68,8 +68,8 @@ export type Project = {
   /** Images de la galerie sur la page dédiée (en plus de la cover). */
   gallery: GalleryImage[]
   client?: string
-  /** Affiché par défaut dans "Selected Works" — les autres n'apparaissent
-   * qu'en cliquant "View all Projects". */
+  /** Affiché par défaut dans "Projets sélectionnés" — les autres
+   * n'apparaissent qu'en cliquant "Voir tous les projets". */
   featured?: boolean
 }
 
@@ -80,14 +80,14 @@ export const projects: Project[] = [
   {
     id: 'agicap',
     title: 'Agicap',
-    category: 'Corporate',
-    year: '2025',
+    category: 'Entreprise',
+    year: '2026',
     cover: asset('/assets/work/agicap/01.jpg'),
     coverFocus: '82% 25%',
     youtubeId: 'UVozHpeMBpk',
     description: "Film de marque pour Agicap, plateforme de gestion de trésorerie.",
     brief: [
-      "Film de marque pour Agicap, plateforme de gestion de trésorerie pour entreprises. Mise en scène d'un utilisateur au naturel, produit à l'écran, lumière basse et contrastée pour un rendu premium et corporate.",
+      "Film de marque pour Agicap, plateforme de gestion de trésorerie pour entreprises. Mise en scène d'un utilisateur au naturel, produit à l'écran, lumière basse et contrastée pour un rendu premium et institutionnel.",
     ],
     gallery: [
       { src: asset('/assets/work/agicap/02.jpg'), focus: '72% 35%' },
@@ -99,7 +99,7 @@ export const projects: Project[] = [
   {
     id: 'freeox',
     title: 'FreeOx Biotech',
-    category: 'Corporate',
+    category: 'Entreprise',
     year: '2025',
     cover: asset('/assets/work/freeox/01.jpg'),
     coverFocus: '52% 30%',
@@ -115,8 +115,8 @@ export const projects: Project[] = [
   {
     id: 'oragen',
     title: 'Oragen Therapeutics',
-    category: 'Corporate',
-    year: '2024',
+    category: 'Entreprise',
+    year: '2026',
     cover: asset('/assets/work/oragen/01.jpg'),
     coverFocus: '68% 40%',
     youtubeId: 'I-eWHfrYxJ8',
@@ -172,7 +172,7 @@ export const projects: Project[] = [
     id: 'ibis',
     title: 'Ibis',
     category: 'Hôtellerie',
-    year: '2024',
+    year: '2026',
     cover: asset('/assets/work/ibis/01.jpg'),
     coverFocus: '62% 55%',
     youtubeId: 'c2mmerRbnVA',
@@ -186,12 +186,12 @@ export const projects: Project[] = [
   {
     id: 'tenacy',
     title: 'Tenacy',
-    category: 'Corporate',
-    year: '2025',
+    category: 'Entreprise',
+    year: '2026',
     cover: asset('/assets/work/tenacy/01.jpg'),
     coverFocus: '48% 25%',
     youtubeId: 'bWQbtqD7OAI',
-    description: 'Interview corporate pour Tenacy, logiciel RH.',
+    description: 'Interview institutionnelle pour Tenacy, logiciel RH.',
     brief: [
       "Interview en environnement de bureaux pour Tenacy (logiciel de pilotage RH), sous-titrée pour les réseaux, avec habillage logo en incrustation.",
     ],
