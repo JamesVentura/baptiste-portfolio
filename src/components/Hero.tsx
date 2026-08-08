@@ -7,11 +7,13 @@ export function Hero() {
   const [videoFailed, setVideoFailed] = useState(false)
 
   return (
-    // Conteneur 2x plus haut que l'écran : le Hero (sticky) reste figé à
-    // l'écran pendant qu'on scroll ce conteneur, ce qui laisse le temps à la
-    // section suivante (About, fond noir) de glisser par-dessus depuis le
-    // bas — effet "rideau qui se lève" façon inspiration.
-    <div id="top" className="relative h-[200svh]">
+    // Conteneur plus haut que l'écran : le Hero (sticky) reste figé pendant
+    // qu'on scroll ce conteneur, ce qui laisse le temps à la section
+    // suivante (About, fond noir) de glisser par-dessus depuis le bas —
+    // effet "rideau qui se lève". Volontairement proche de 100svh (pas
+    // 200svh) pour que le scroll réagisse tout de suite : juste assez de
+    // marge pour que le rideau ait le temps de monter, sans zone morte.
+    <div id="top" className="relative h-[125svh]">
       <section className="sticky top-0 h-[100svh] overflow-hidden pt-28">
         <motion.p
           initial={{ opacity: 0 }}

@@ -67,7 +67,7 @@ export function ProjectPage() {
                 src={project.cover}
                 alt={project.title}
                 label={`Cover — ${project.title}`}
-                className="h-full w-full grayscale"
+                className="h-full w-full"
               />
             )}
           </div>
@@ -98,7 +98,7 @@ export function ProjectPage() {
                     src={src}
                     alt={`${project.title} — photo ${i + 1}`}
                     label={`${project.title} — image ${i + 1}`}
-                    className="h-full w-full grayscale"
+                    className="h-full w-full"
                   />
                 </div>
               </Reveal>
