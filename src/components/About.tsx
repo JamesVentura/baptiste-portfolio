@@ -17,7 +17,7 @@ export function About() {
           <ArrowGlyph className="size-28 text-stone-light md:size-48" />
         </Reveal>
 
-        <div className="max-w-2xl">
+        <div className="max-w-4xl">
           <Reveal delay={0.1}>
             <p className="mb-6 text-sm uppercase tracking-widest text-paper/70">
               {about.subheading}
@@ -25,7 +25,7 @@ export function About() {
           </Reveal>
 
           <Reveal delay={0.15}>
-            <p className="text-xl leading-relaxed text-paper md:text-2xl">{about.quote}</p>
+            <p className="text-base leading-relaxed text-paper md:text-lg">{about.quote}</p>
           </Reveal>
 
           <Reveal delay={0.25}>
