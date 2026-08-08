@@ -26,7 +26,7 @@ export const profile = {
   location: 'France',
   email: 'hello@baptiste-photo.fr',
   cvHref: undefined as string | undefined,
-  portrait: asset('/assets/hero/portrait.jpg'),
+  portrait: asset('/assets/hero/portrait.png'),
   socials: [
     { label: 'Instagram', href: 'https://instagram.com/' },
     { label: 'LinkedIn', href: 'https://linkedin.com/' },

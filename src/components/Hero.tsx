@@ -39,18 +39,19 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Photo au premier plan : fond opaque, masque le texte qui défile derrière elle. */}
+          {/* Photo détourée au premier plan, sans carte ni fond : elle
+              flotte directement sur le texte qui défile derrière elle. */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.3, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="relative z-10 aspect-[3/4] w-[52vw] max-w-sm bg-paper shadow-2xl sm:w-[40vw] md:w-[26vw]"
+            className="relative z-10 h-[38vh] w-[52vw] max-w-sm sm:w-[40vw] md:h-[46vh] md:w-[26vw]"
           >
             <SmartImage
               src={profile.portrait}
               alt={`Portrait de ${profile.name}`}
               label="Photo de Baptiste (hero)"
-              className="h-full w-full grayscale"
+              className="h-full w-full object-contain object-bottom grayscale drop-shadow-2xl"
             />
           </motion.div>
         </div>
