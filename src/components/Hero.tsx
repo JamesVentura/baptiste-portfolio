@@ -40,12 +40,13 @@ export function Hero() {
           </div>
 
           {/* Photo détourée au premier plan, sans carte ni fond : elle
-              flotte directement sur le texte qui défile derrière elle. */}
+              flotte directement sur le texte qui défile derrière elle,
+              ancrée au bas de la zone (pile au-dessus de "Scroll down"). */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.3, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="relative z-10 h-[38vh] w-[52vw] max-w-sm sm:w-[40vw] md:h-[46vh] md:w-[26vw]"
+            className="absolute inset-x-0 bottom-0 z-10 mx-auto h-[58vh] w-[68vw] max-w-md sm:h-[64vh] sm:w-[50vw] md:h-[76vh] md:w-[34vw]"
           >
             <SmartImage
               src={profile.portrait}
