@@ -57,64 +57,113 @@ export type Project = {
   /** Images de la galerie sur la page dédiée (en plus de la cover). */
   gallery: string[]
   client?: string
+  /** Affiché par défaut dans "Selected Works" — les autres n'apparaissent
+   * qu'en cliquant "View all Projects". */
+  featured?: boolean
 }
 
+// TODO Baptiste : les briefs ci-dessous sont rédigés à partir des visuels
+// seuls (pas d'infos sur le brief réel, le rôle exact, la date précise) —
+// à corriger/compléter avec le vrai contexte de chaque tournage.
 export const projects: Project[] = [
   {
-    id: 'projet-01',
-    title: 'Projet 01',
-    category: 'Portrait',
+    id: 'agicap',
+    title: 'Agicap',
+    category: 'Corporate',
     year: '2025',
-    cover: asset('/assets/work/projet-01-cover.jpg'),
-    description: 'Description courte du projet — à remplacer.',
-    brief: ["Description à remplacer par le vrai texte du projet — contexte, intention, approche."],
-    gallery: [
-      asset('/assets/work/projet-01/01.jpg'),
-      asset('/assets/work/projet-01/02.jpg'),
-      asset('/assets/work/projet-01/03.jpg'),
+    cover: asset('/assets/work/agicap/01.jpg'),
+    video: asset('/assets/work/agicap/video.mp4'),
+    description: "Film de marque pour Agicap, plateforme de gestion de trésorerie.",
+    brief: [
+      "Film de marque pour Agicap, plateforme de gestion de trésorerie pour entreprises. Mise en scène d'un utilisateur au naturel, produit à l'écran, lumière basse et contrastée pour un rendu premium et corporate.",
     ],
+    gallery: [asset('/assets/work/agicap/02.jpg'), asset('/assets/work/agicap/03.jpg')],
+    client: 'Agicap',
+    featured: true,
   },
   {
-    id: 'projet-02',
-    title: 'Projet 02',
-    category: 'Mariage',
+    id: 'freeox',
+    title: 'FreeOx Biotech',
+    category: 'Corporate',
     year: '2025',
-    cover: asset('/assets/work/projet-02-cover.jpg'),
-    description: 'Description courte du projet — à remplacer.',
-    brief: ["Description à remplacer par le vrai texte du projet — contexte, intention, approche."],
-    gallery: [
-      asset('/assets/work/projet-02/01.jpg'),
-      asset('/assets/work/projet-02/02.jpg'),
-      asset('/assets/work/projet-02/03.jpg'),
+    cover: asset('/assets/work/freeox/01.jpg'),
+    video: asset('/assets/work/freeox/video.mp4'),
+    description: 'Film institutionnel pour FreeOx Biotech, biotech spécialisée dans la recherche.',
+    brief: [
+      "Interview institutionnelle pour FreeOx Biotech. Cadre en intérieur/extérieur avec lumière naturelle, habillage graphique en post-production pour appuyer le propos scientifique.",
     ],
+    gallery: [asset('/assets/work/freeox/02.jpg')],
+    client: 'FreeOx Biotech',
+    featured: true,
   },
   {
-    id: 'projet-03',
-    title: 'Projet 03',
-    category: 'Studio',
+    id: 'oragen',
+    title: 'Oragen Therapeutics',
+    category: 'Corporate',
     year: '2024',
-    cover: asset('/assets/work/projet-03-cover.jpg'),
-    description: 'Description courte du projet — à remplacer.',
-    brief: ["Description à remplacer par le vrai texte du projet — contexte, intention, approche."],
-    gallery: [
-      asset('/assets/work/projet-03/01.jpg'),
-      asset('/assets/work/projet-03/02.jpg'),
-      asset('/assets/work/projet-03/03.jpg'),
+    cover: asset('/assets/work/oragen/01.jpg'),
+    video: asset('/assets/work/oragen/video.mp4'),
+    description: 'Film de marque pour Oragen Therapeutics, laboratoire pharmaceutique.',
+    brief: [
+      "Tournage en environnement de bureaux pour Oragen Therapeutics — plans de mise en situation, habillage data-visualisation en post-prod pour mettre en avant les résultats cliniques.",
     ],
+    gallery: [asset('/assets/work/oragen/02.jpg'), asset('/assets/work/oragen/03.jpg')],
+    client: 'Oragen Therapeutics',
+    featured: true,
   },
   {
-    id: 'projet-04',
-    title: 'Projet 04',
-    category: 'Reportage',
+    id: 'izieu',
+    title: 'Journées de la Mémoire — Izieu',
+    category: 'Documentaire',
     year: '2024',
-    cover: asset('/assets/work/projet-04-cover.jpg'),
-    description: 'Description courte du projet — à remplacer.',
-    brief: ["Description à remplacer par le vrai texte du projet — contexte, intention, approche."],
-    gallery: [
-      asset('/assets/work/projet-04/01.jpg'),
-      asset('/assets/work/projet-04/02.jpg'),
-      asset('/assets/work/projet-04/03.jpg'),
+    cover: asset('/assets/work/izieu/01.jpg'),
+    video: asset('/assets/work/izieu/video.mp4'),
+    description: 'Reportage aux Journées de la Mémoire de la Maison d’Izieu.',
+    brief: [
+      "Captation de la cérémonie commémorative aux Journées de la Mémoire (Maison d'Izieu) : reportage en lumière naturelle, registre plus sobre et documentaire que les tournages de marque.",
     ],
+    gallery: [asset('/assets/work/izieu/02.jpg'), asset('/assets/work/izieu/03.jpg')],
+    client: 'Maison d’Izieu',
+    featured: true,
+  },
+  {
+    id: 'dbo',
+    title: 'DBO',
+    category: 'Restauration',
+    year: '2025',
+    cover: asset('/assets/work/dbo/01.jpg'),
+    description: 'Interview en salle pour un restaurant.',
+    brief: [
+      "Interview du gérant en salle, restaurant en activité en arrière-plan pour ancrer le propos dans le lieu et l'ambiance réelle de l'établissement.",
+    ],
+    gallery: [asset('/assets/work/dbo/02.jpg'), asset('/assets/work/dbo/03.jpg')],
+    client: 'DBO',
+  },
+  {
+    id: 'ibis',
+    title: 'Ibis',
+    category: 'Hôtellerie',
+    year: '2024',
+    cover: asset('/assets/work/ibis/01.jpg'),
+    description: 'Ambiance restaurant/hôtel pour Ibis.',
+    brief: [
+      "Captation d'ambiance en salle pour Ibis — clients et équipe en situation, lumière naturelle, pour restituer l'atmosphère vivante du lieu.",
+    ],
+    gallery: [asset('/assets/work/ibis/02.jpg')],
+    client: 'Ibis',
+  },
+  {
+    id: 'tenacy',
+    title: 'Tenacy',
+    category: 'Corporate',
+    year: '2025',
+    cover: asset('/assets/work/tenacy/01.jpg'),
+    description: 'Interview corporate pour Tenacy, logiciel RH.',
+    brief: [
+      "Interview en environnement de bureaux pour Tenacy (logiciel de pilotage RH), sous-titrée pour les réseaux, avec habillage logo en incrustation.",
+    ],
+    gallery: [asset('/assets/work/tenacy/02.jpg')],
+    client: 'Tenacy',
   },
 ]
 

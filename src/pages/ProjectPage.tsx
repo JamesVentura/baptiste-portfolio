@@ -49,13 +49,27 @@ export function ProjectPage() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div className="mb-12 aspect-[16/10] overflow-hidden bg-paper-dim md:mb-20">
-            <SmartImage
-              src={project.cover}
-              alt={project.title}
-              label={`Cover — ${project.title}`}
-              className="h-full w-full grayscale"
-            />
+          <div className="mb-12 aspect-video overflow-hidden bg-paper-dim md:mb-20">
+            {project.video ? (
+              // Le film du projet, en couleur et avec le son (contrairement
+              // au showreel du hero, muet) — c'est le livrable réel.
+              <video
+                controls
+                playsInline
+                preload="metadata"
+                poster={project.cover}
+                className="h-full w-full object-cover"
+              >
+                <source src={project.video} type="video/mp4" />
+              </video>
+            ) : (
+              <SmartImage
+                src={project.cover}
+                alt={project.title}
+                label={`Cover — ${project.title}`}
+                className="h-full w-full grayscale"
+              />
+            )}
           </div>
         </Reveal>
 

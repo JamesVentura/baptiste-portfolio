@@ -14,6 +14,9 @@ import { SmartImage } from './SmartImage'
 const PREVIEW_W = 220
 const PREVIEW_H = 260
 
+const featuredProjects = projects.filter((p) => p.featured)
+const restProjects = projects.filter((p) => !p.featured)
+
 function WorkRow({ project }: { project: Project }) {
   const rowRef = useRef<HTMLAnchorElement>(null)
   const [hovered, setHovered] = useState(false)
@@ -70,37 +73,60 @@ function WorkRow({ project }: { project: Project }) {
 }
 
 export function Work() {
+  const [showAll, setShowAll] = useState(false)
+  const visibleCount = showAll ? projects.length : featuredProjects.length
+
   return (
     <section id="work" className="px-6 pb-8 pt-24 md:px-10 md:pb-10 md:pt-32">
       <Reveal>
         <div className="mb-2 flex items-center justify-between border-b border-line pb-6">
           <p className="text-sm uppercase tracking-widest text-stone">Selected Works</p>
           <span className="text-sm uppercase tracking-widest text-stone">
-            {String(projects.length).padStart(2, '0')} projets
+            {String(visibleCount).padStart(2, '0')} / {String(projects.length).padStart(2, '0')} projets
           </span>
         </div>
       </Reveal>
 
       <div>
-        {projects.map((project, i) => (
+        {featuredProjects.map((project, i) => (
           <Reveal key={project.id} delay={i * 0.06}>
             <WorkRow project={project} />
           </Reveal>
         ))}
+
+        <AnimatePresence initial={false}>
+          {showAll &&
+            restProjects.map((project, i) => (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.4, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
+                className="overflow-hidden"
+              >
+                <WorkRow project={project} />
+              </motion.div>
+            ))}
+        </AnimatePresence>
       </div>
 
-      {/* TODO : à pointer vers une page dédiée "tous les projets" quand elle existera. */}
-      <Reveal delay={0.2}>
-        <div className="flex justify-center pt-8 md:pt-10">
-          <a
-            href="#work"
-            className="group inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-ink transition-colors hover:text-stone"
-          >
-            View all Projects
-            <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-          </a>
-        </div>
-      </Reveal>
+      {restProjects.length > 0 && (
+        <Reveal delay={0.2}>
+          <div className="flex justify-center pt-8 md:pt-10">
+            <button
+              type="button"
+              onClick={() => setShowAll((v) => !v)}
+              className="group inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-ink transition-colors hover:text-stone"
+            >
+              {showAll ? 'View less Projects' : 'View all Projects'}
+              <ArrowUpRight
+                className={`size-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 ${showAll ? 'rotate-180' : ''}`}
+              />
+            </button>
+          </div>
+        </Reveal>
+      )}
     </section>
   )
 }
