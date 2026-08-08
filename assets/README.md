@@ -14,25 +14,22 @@ morceau par morceau.
   (La section "À propos" n'utilise pas de photo — juste du texte, pas besoin
   d'y déposer quoi que ce soit.)
 
-## `work/`
-Une cover par projet (format portrait recommandé, ratio ~4:5), affichée
-dans la liste "Selected Works" et en haut de la page du projet :
-- `projet-01-cover.jpg`
-- `projet-02-cover.jpg`
-- `projet-03-cover.jpg`
-- `projet-04-cover.jpg`
+## `work/<id>/`
+Chaque projet a un dossier (`work/agicap/`, `work/tenacy/`, etc.) avec :
+- une cover (`01.jpg`, référencée en `cover` dans `content.ts`) — affichée
+  dans "Selected Works" et en haut de la page du projet
+- le reste de la galerie (`02.jpg`, `03.jpg`, ...) — affichée sur la page
+  dédiée du projet (`/work/<id>`)
 
-Chaque projet a aussi sa page dédiée (`/work/projet-01`, etc.) avec une
-petite galerie. Dépose les images dans un sous-dossier `work/<id>/` :
-- `work/projet-01/01.jpg`, `02.jpg`, `03.jpg`
-- `work/projet-02/01.jpg`, `02.jpg`, `03.jpg`
-- `work/projet-03/01.jpg`, `02.jpg`, `03.jpg`
-- `work/projet-04/01.jpg`, `02.jpg`, `03.jpg`
+Les 7 projets actuels (Agicap, FreeOx, Oragen, Izieu, DBO, Ibis, Tenacy)
+viennent d'un dossier "IMG DRIVE" déposé dans le projet — à toi de
+remplacer les images/briefs par les tiens quand tu es prêt. Seuls 4
+projets ("featured: true" dans `content.ts`) s'affichent par défaut sur
+la home ; les autres apparaissent en cliquant "View all Projects".
 
-Tu peux ajouter plus (ou moins) d'images par projet : modifie le tableau
-`gallery` de l'entrée correspondante dans `src/data/content.ts`. Tu peux
-aussi ajouter d'autres projets entiers : ajoute une entrée dans le
-tableau `projects` avec un nouvel `id`, `cover` et `gallery`.
+Pour ajouter/retirer un projet : modifie le tableau `projects` dans
+`src/data/content.ts` (id, titre, catégorie, année, cover, gallery,
+brief, featured).
 
 ## Formats
 - Images : `.jpg` / `.png` / `.webp`
