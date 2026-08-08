@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react'
 import { AnimatePresence, motion, useMotionValue, useSpring } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import type { Project } from '@/data/content'
 import { projects } from '@/data/content'
 import { Reveal } from './Reveal'
@@ -29,9 +30,9 @@ function WorkRow({ project }: { project: Project }) {
   }
 
   return (
-    <a
+    <Link
       ref={rowRef}
-      href={`#${project.id}`}
+      to={`/work/${project.id}`}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onMouseMove={handleMouseMove}
@@ -64,7 +65,7 @@ function WorkRow({ project }: { project: Project }) {
           </motion.div>
         )}
       </AnimatePresence>
-    </a>
+    </Link>
   )
 }
 

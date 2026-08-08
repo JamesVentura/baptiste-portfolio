@@ -1,24 +1,32 @@
-import { About } from './components/About'
-import { Contact } from './components/Contact'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Footer } from './components/Footer'
-import { Hero } from './components/Hero'
-import { Marquee } from './components/Marquee'
 import { Nav } from './components/Nav'
-import { Work } from './components/Work'
+import { useScrollToHash } from './lib/useScrollToHash'
+import { Home } from './pages/Home'
+import { ProjectPage } from './pages/ProjectPage'
 
-function App() {
+function Layout() {
+  useScrollToHash()
+
   return (
     <div className="min-h-screen bg-paper text-ink">
       <Nav />
       <main>
-        <Hero />
-        <About />
-        <Marquee />
-        <Work />
-        <Contact />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/work/:id" element={<ProjectPage />} />
+        </Routes>
       </main>
       <Footer />
     </div>
+  )
+}
+
+function App() {
+  return (
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
+      <Layout />
+    </BrowserRouter>
   )
 }
 

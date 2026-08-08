@@ -34,6 +34,8 @@ export const profile = {
   ],
 }
 
+// href en ancre ("#about") : le composant Nav se charge de les transformer
+// en "/#about" quand on n'est pas sur la page d'accueil.
 export const nav = [
   { label: 'About', href: '#about' },
   { label: 'Work', href: '#work' },
@@ -47,7 +49,13 @@ export type Project = {
   year: string
   cover: string
   video?: string
+  /** Description courte, affichée nulle part pour l'instant (réservée). */
   description: string
+  /** Paragraphe(s) affichés sur la page dédiée du projet. */
+  brief: string[]
+  /** Images de la galerie sur la page dédiée (en plus de la cover). */
+  gallery: string[]
+  client?: string
 }
 
 export const projects: Project[] = [
@@ -58,6 +66,12 @@ export const projects: Project[] = [
     year: '2025',
     cover: asset('/assets/work/projet-01-cover.jpg'),
     description: 'Description courte du projet — à remplacer.',
+    brief: ["Description à remplacer par le vrai texte du projet — contexte, intention, approche."],
+    gallery: [
+      asset('/assets/work/projet-01/01.jpg'),
+      asset('/assets/work/projet-01/02.jpg'),
+      asset('/assets/work/projet-01/03.jpg'),
+    ],
   },
   {
     id: 'projet-02',
@@ -66,6 +80,12 @@ export const projects: Project[] = [
     year: '2025',
     cover: asset('/assets/work/projet-02-cover.jpg'),
     description: 'Description courte du projet — à remplacer.',
+    brief: ["Description à remplacer par le vrai texte du projet — contexte, intention, approche."],
+    gallery: [
+      asset('/assets/work/projet-02/01.jpg'),
+      asset('/assets/work/projet-02/02.jpg'),
+      asset('/assets/work/projet-02/03.jpg'),
+    ],
   },
   {
     id: 'projet-03',
@@ -74,6 +94,12 @@ export const projects: Project[] = [
     year: '2024',
     cover: asset('/assets/work/projet-03-cover.jpg'),
     description: 'Description courte du projet — à remplacer.',
+    brief: ["Description à remplacer par le vrai texte du projet — contexte, intention, approche."],
+    gallery: [
+      asset('/assets/work/projet-03/01.jpg'),
+      asset('/assets/work/projet-03/02.jpg'),
+      asset('/assets/work/projet-03/03.jpg'),
+    ],
   },
   {
     id: 'projet-04',
@@ -82,6 +108,12 @@ export const projects: Project[] = [
     year: '2024',
     cover: asset('/assets/work/projet-04-cover.jpg'),
     description: 'Description courte du projet — à remplacer.',
+    brief: ["Description à remplacer par le vrai texte du projet — contexte, intention, approche."],
+    gallery: [
+      asset('/assets/work/projet-04/01.jpg'),
+      asset('/assets/work/projet-04/02.jpg'),
+      asset('/assets/work/projet-04/03.jpg'),
+    ],
   },
 ]
 

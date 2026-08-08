@@ -1,12 +1,18 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
+import { useLocation } from 'react-router-dom'
 import { nav, profile } from '@/data/content'
 import { cn } from '@/lib/utils'
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const { pathname } = useLocation()
+  // Sur la home, "#work" scrolle sur place ; ailleurs (page projet), il
+  // faut d'abord revenir à "/" avant de scroller jusqu'à l'ancre (en
+  // tenant compte du sous-dossier de base sur GitHub Pages).
+  const toHash = (hash: string) => (pathname === '/' ? hash : `${import.meta.env.BASE_URL}${hash}`)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -34,7 +40,7 @@ export function Nav() {
           scrolled && !open ? 'bg-paper/80 backdrop-blur-md border-b border-line' : 'bg-transparent',
         )}
       >
-        <a href="#top" className="font-display text-xl tracking-wide">
+        <a href={toHash('#top')} className="font-display text-xl tracking-wide">
           {profile.name.split(' ')[0].toUpperCase()}
         </a>
 
@@ -42,7 +48,7 @@ export function Nav() {
           {nav.map((item) => (
             <a
               key={item.href}
-              href={item.href}
+              href={toHash(item.href)}
               className="text-sm uppercase tracking-widest text-stone transition-colors hover:text-ink"
             >
               {item.label}
@@ -51,7 +57,7 @@ export function Nav() {
         </nav>
 
         <a
-          href="#contact"
+          href={toHash('#contact')}
           className="hidden rounded-full border border-ink px-5 py-2 text-sm uppercase tracking-widest transition-colors hover:bg-ink hover:text-paper md:inline-block"
         >
           Hire me
@@ -79,7 +85,7 @@ export function Nav() {
             {nav.map((item, i) => (
               <motion.a
                 key={item.href}
-                href={item.href}
+                href={toHash(item.href)}
                 onClick={() => setOpen(false)}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -91,7 +97,7 @@ export function Nav() {
             ))}
 
             <motion.a
-              href="#contact"
+              href={toHash('#contact')}
               onClick={() => setOpen(false)}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
