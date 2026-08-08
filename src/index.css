@@ -12,7 +12,6 @@
   --color-line: #dddad0;
 
   --animate-marquee: marquee 28s linear infinite;
-  --animate-marquee-hero: marquee 22s linear infinite;
 }
 
 @keyframes marquee {

@@ -1,12 +1,11 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { profile } from '@/data/content'
 import { SmartImage } from './SmartImage'
 
-// Le nom est répété plusieurs fois bout à bout pour un défilement infini
-// sans coupure visible (la moitié de la piste défile en boucle).
-const marqueeName = Array(6).fill(profile.name.toUpperCase())
-
 export function Hero() {
+  const [videoFailed, setVideoFailed] = useState(false)
+
   return (
     // Conteneur 2x plus haut que l'écran : le Hero (sticky) reste figé à
     // l'écran pendant qu'on scroll ce conteneur, ce qui laisse le temps à la
@@ -23,23 +22,25 @@ export function Hero() {
           {profile.role}
         </motion.p>
 
-        {/* Nom en défilement infini, derrière la photo — on n'en voit que
-            des fragments dépasser de part et d'autre. */}
-        <div className="pointer-events-none absolute inset-x-0 top-1/2 flex -translate-y-1/2 overflow-hidden">
-          <div className="flex w-max animate-marquee-hero items-center">
-            {[...marqueeName, ...marqueeName].map((name, i) => (
-              <span
-                key={i}
-                className="font-display shrink-0 whitespace-nowrap px-6 text-[28vh] leading-none tracking-tight text-ink sm:text-[32vh] md:text-[38vh]"
-              >
-                {name}
-              </span>
-            ))}
+        {/* Showreel en fond, derrière la photo — même bande que le nom qui
+            défilait avant, remplacée ici par la vidéo (en boucle, muette). */}
+        {!videoFailed && (
+          <div className="absolute inset-x-0 top-1/2 h-[42vh] -translate-y-1/2 overflow-hidden sm:h-[46vh] md:h-[54vh]">
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              onError={() => setVideoFailed(true)}
+              className="h-full w-full object-cover grayscale"
+            >
+              <source src={profile.showreel} type="video/mp4" />
+            </video>
           </div>
-        </div>
+        )}
 
         {/* Photo détourée au premier plan, sans carte ni fond : elle flotte
-            directement sur le texte qui défile derrière elle, collée au
+            directement sur le showreel qui joue derrière elle, collée au
             vrai bord bas de l'écran — comme dans l'inspiration. */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}

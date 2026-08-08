@@ -12,6 +12,11 @@ dist
 dist-ssr
 *.local
 
+# Fichiers sources bruts déposés par Baptiste (vidéos 4K non compressées,
+# projets clients passés) — trop lourds pour git, jamais servis tels quels.
+# Les versions optimisées pour le site vivent dans public/assets/.
+/IMG DRIVE/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
