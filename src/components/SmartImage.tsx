@@ -7,6 +7,10 @@ type SmartImageProps = {
   alt: string
   className?: string
   label?: string
+  /** Point de recadrage CSS (`object-position`), ex. "80% 30%" — permet de
+   * garder le vrai sujet dans le cadre plutôt qu'un centrage par défaut qui
+   * tombe parfois sur un mur ou un bout de visage. */
+  focus?: string
 }
 
 /**
@@ -15,7 +19,7 @@ type SmartImageProps = {
  * d'une icône d'image cassée) tant que le fichier n'existe pas. Dès que le
  * fichier apparaît au bon chemin, l'image s'affiche automatiquement.
  */
-export function SmartImage({ src, alt, className, label }: SmartImageProps) {
+export function SmartImage({ src, alt, className, label, focus }: SmartImageProps) {
   const [failed, setFailed] = useState(false)
 
   if (failed) {
@@ -40,6 +44,7 @@ export function SmartImage({ src, alt, className, label }: SmartImageProps) {
       loading="lazy"
       onError={() => setFailed(true)}
       className={cn('object-cover', className)}
+      style={focus ? { objectPosition: focus } : undefined}
     />
   )
 }

@@ -4,6 +4,7 @@ import { Link, Navigate, useParams } from 'react-router-dom'
 import { Contact } from '@/components/Contact'
 import { Reveal } from '@/components/Reveal'
 import { SmartImage } from '@/components/SmartImage'
+import { YouTubeEmbed } from '@/components/YouTubeEmbed'
 import { projects } from '@/data/content'
 import { ArrowGlyph } from '@/components/ArrowGlyph'
 
@@ -50,24 +51,21 @@ export function ProjectPage() {
 
         <Reveal delay={0.1}>
           <div className="mb-12 aspect-video overflow-hidden bg-paper-dim md:mb-20">
-            {project.video ? (
-              // Le film du projet, en couleur et avec le son (contrairement
-              // au showreel du hero, muet) — c'est le livrable réel.
-              <video
-                controls
-                playsInline
-                preload="metadata"
-                poster={project.cover}
-                className="h-full w-full object-cover"
-              >
-                <source src={project.video} type="video/mp4" />
-              </video>
+            {project.youtubeId ? (
+              // Vidéo hébergée en non-répertorié sur YouTube plutôt qu'en
+              // fichier autohébergé : meilleure qualité, streaming adaptatif.
+              <YouTubeEmbed
+                id={project.youtubeId}
+                title={project.title}
+                className="h-full w-full"
+              />
             ) : (
               <SmartImage
                 src={project.cover}
                 alt={project.title}
                 label={`Cover — ${project.title}`}
                 className="h-full w-full"
+                focus={project.coverFocus}
               />
             )}
           </div>
@@ -91,14 +89,15 @@ export function ProjectPage() {
 
         {project.gallery.length > 0 && (
           <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 md:mt-24">
-            {project.gallery.map((src, i) => (
-              <Reveal key={src} delay={i * 0.08}>
+            {project.gallery.map((image, i) => (
+              <Reveal key={image.src} delay={i * 0.08}>
                 <div className="aspect-[4/5] overflow-hidden bg-paper-dim">
                   <SmartImage
-                    src={src}
+                    src={image.src}
                     alt={`${project.title} — photo ${i + 1}`}
                     label={`${project.title} — image ${i + 1}`}
                     className="h-full w-full"
+                    focus={image.focus}
                   />
                 </div>
               </Reveal>

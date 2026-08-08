@@ -64,6 +64,7 @@ function WorkRow({ project }: { project: Project }) {
               alt={project.title}
               label={`Cover — ${project.title}`}
               className="h-full w-full grayscale"
+              focus={project.coverFocus}
             />
           </motion.div>
         )}
@@ -94,16 +95,19 @@ export function Work() {
           </Reveal>
         ))}
 
+        {/* Pas de wrapper `overflow-hidden` ici (contrairement à une
+            animation de hauteur classique) : ça couperait la vignette de
+            survol de WorkRow, qui a justement besoin de déborder librement
+            vers le haut (voir le clip-path sur WorkRow plus haut). */}
         <AnimatePresence initial={false}>
           {showAll &&
             restProjects.map((project, i) => (
               <motion.div
                 key={project.id}
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
+                initial={{ opacity: 0, y: -16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -16 }}
                 transition={{ duration: 0.4, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
-                className="overflow-hidden"
               >
                 <WorkRow project={project} />
               </motion.div>
