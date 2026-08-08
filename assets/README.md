@@ -15,15 +15,24 @@ morceau par morceau.
   d'y déposer quoi que ce soit.)
 
 ## `work/`
-Une cover par projet (format portrait recommandé, ratio ~4:5) :
+Une cover par projet (format portrait recommandé, ratio ~4:5), affichée
+dans la liste "Selected Works" et en haut de la page du projet :
 - `projet-01-cover.jpg`
 - `projet-02-cover.jpg`
 - `projet-03-cover.jpg`
 - `projet-04-cover.jpg`
 
-Tu peux ajouter d'autres projets : ajoute une entrée dans le tableau
-`projects` de `src/data/content.ts` avec un nouvel `id` et un chemin
-`cover` correspondant à ton fichier.
+Chaque projet a aussi sa page dédiée (`/work/projet-01`, etc.) avec une
+petite galerie. Dépose les images dans un sous-dossier `work/<id>/` :
+- `work/projet-01/01.jpg`, `02.jpg`, `03.jpg`
+- `work/projet-02/01.jpg`, `02.jpg`, `03.jpg`
+- `work/projet-03/01.jpg`, `02.jpg`, `03.jpg`
+- `work/projet-04/01.jpg`, `02.jpg`, `03.jpg`
+
+Tu peux ajouter plus (ou moins) d'images par projet : modifie le tableau
+`gallery` de l'entrée correspondante dans `src/data/content.ts`. Tu peux
+aussi ajouter d'autres projets entiers : ajoute une entrée dans le
+tableau `projects` avec un nouvel `id`, `cover` et `gallery`.
 
 ## Formats
 - Images : `.jpg` / `.png` / `.webp`

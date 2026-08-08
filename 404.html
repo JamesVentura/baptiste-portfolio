@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Baptiste — Photographe</title>
+    <!--
+      GitHub Pages n'a pas de routing serveur : un lien direct vers
+      /baptiste-portfolio/work/projet-01 renvoie cette page 404 par défaut.
+      On redirige vers index.html en encodant le chemin dans la query
+      string ; le script dans index.html le restaure ensuite via
+      history.replaceState avant que React ne s'monte.
+      Technique : https://github.com/rafgraph/spa-github-pages
+    -->
+    <script>
+      var pathSegmentsToKeep = 1 // "/baptiste-portfolio"
+
+      var l = window.location
+      l.replace(
+        l.protocol +
+          '//' +
+          l.hostname +
+          (l.port ? ':' + l.port : '') +
+          l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') +
+          '/?/' +
+          l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+          (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+          l.hash,
+      )
+    </script>
+  </head>
+  <body></body>
+</html>
