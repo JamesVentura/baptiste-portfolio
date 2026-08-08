@@ -21,17 +21,19 @@ function asset(path: string) {
 
 export const profile = {
   name: 'Baptiste Berthelier',
-  role: 'Photographe & créatif visuel',
+  role: 'Vidéaste & photographe freelance',
   tagline: "Je capture des instants qui n'existeront plus jamais deux fois.",
-  location: 'France',
-  email: 'hello@baptiste-photo.fr',
+  location: 'Lyon, disponible partout en France',
+  email: 'baptiste.berthelier@gmail.com',
   cvHref: undefined as string | undefined,
   portrait: asset('/assets/hero/portrait.png'),
   showreel: asset('/assets/hero/showreel.mp4'),
   socials: [
-    { label: 'Instagram', href: 'https://instagram.com/' },
-    { label: 'LinkedIn', href: 'https://linkedin.com/' },
-    { label: 'Behance', href: 'https://behance.net/' },
+    { label: 'Instagram', href: 'https://www.instagram.com/baptiste_berthelier/' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/baptiste-berthelier-88456b194' },
+    // Numéro FR 06 09 07 47 33 → format international sans le 0 initial,
+    // tel qu'attendu par le lien wa.me.
+    { label: 'WhatsApp', href: 'https://wa.me/33609074733' },
   ],
 }
 
@@ -218,9 +220,9 @@ export const projects: Project[] = [
 
 export const about = {
   heading: 'À propos',
-  // TODO Baptiste : bio réelle
+  subheading: 'Baptiste Berthelier — Vidéaste & Photographe freelance',
   quote:
-    "Photographe basé en France, je raconte des histoires à travers la lumière et le cadrage. Formé à l'argentique avant de passer au numérique, j'ai gardé de cette époque un souci du détail et de la composition qui infuse chaque image que je livre.",
+    "Diplômé d'une école de cinéma, je suis vidéaste et photographe freelance basé à Lyon, avec une disponibilité partout en France. Au fil de mes expériences, j'ai eu l'occasion de travailler sur des projets variés : films corporate, publicités, interviews, événements et contenus de marque. Chaque projet représente pour moi une nouvelle occasion de créer des images fortes et de donner du sens à une histoire. Passionné par l'image et la narration, j'accorde une attention particulière à la lumière, aux détails et à l'esthétique afin de créer des contenus qui correspondent à l'identité de chaque projet. Mon objectif : raconter votre histoire à travers des images qui vous ressemblent.",
   status: 'Actuellement disponible pour des missions freelance',
 }
 

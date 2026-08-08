@@ -18,8 +18,14 @@ export function About() {
         </Reveal>
 
         <div className="max-w-2xl">
+          <Reveal delay={0.1}>
+            <p className="mb-6 text-sm uppercase tracking-widest text-paper/70">
+              {about.subheading}
+            </p>
+          </Reveal>
+
           <Reveal delay={0.15}>
-            <p className="text-xl leading-relaxed text-paper md:text-2xl">"{about.quote}"</p>
+            <p className="text-xl leading-relaxed text-paper md:text-2xl">{about.quote}</p>
           </Reveal>
 
           <Reveal delay={0.25}>
