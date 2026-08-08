@@ -13,7 +13,7 @@ export function Hero() {
     // section suivante (About, fond noir) de glisser par-dessus depuis le
     // bas — effet "rideau qui se lève" façon inspiration.
     <div id="top" className="relative h-[200svh]">
-      <section className="sticky top-0 flex h-[100svh] flex-col overflow-hidden pt-28">
+      <section className="sticky top-0 h-[100svh] overflow-hidden pt-28">
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -23,46 +23,44 @@ export function Hero() {
           {profile.role}
         </motion.p>
 
-        <div className="relative flex flex-1 items-center justify-center py-12">
-          {/* Nom en défilement infini, derrière la photo — on n'en voit que
-              des fragments dépasser de part et d'autre. */}
-          <div className="pointer-events-none absolute inset-x-0 flex overflow-hidden">
-            <div className="flex w-max animate-marquee-hero items-center">
-              {[...marqueeName, ...marqueeName].map((name, i) => (
-                <span
-                  key={i}
-                  className="font-display shrink-0 whitespace-nowrap px-6 text-[28vh] leading-none tracking-tight text-ink sm:text-[32vh] md:text-[38vh]"
-                >
-                  {name}
-                </span>
-              ))}
-            </div>
+        {/* Nom en défilement infini, derrière la photo — on n'en voit que
+            des fragments dépasser de part et d'autre. */}
+        <div className="pointer-events-none absolute inset-x-0 top-1/2 flex -translate-y-1/2 overflow-hidden">
+          <div className="flex w-max animate-marquee-hero items-center">
+            {[...marqueeName, ...marqueeName].map((name, i) => (
+              <span
+                key={i}
+                className="font-display shrink-0 whitespace-nowrap px-6 text-[28vh] leading-none tracking-tight text-ink sm:text-[32vh] md:text-[38vh]"
+              >
+                {name}
+              </span>
+            ))}
           </div>
-
-          {/* Photo détourée au premier plan, sans carte ni fond : elle
-              flotte directement sur le texte qui défile derrière elle,
-              ancrée au bas de la zone (pile au-dessus de "Scroll down"). */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.3, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute inset-x-0 bottom-0 z-10 mx-auto h-[58vh] w-[68vw] max-w-md sm:h-[64vh] sm:w-[50vw] md:h-[76vh] md:w-[34vw]"
-          >
-            <SmartImage
-              src={profile.portrait}
-              alt={`Portrait de ${profile.name}`}
-              label="Photo de Baptiste (hero)"
-              className="h-full w-full object-contain object-bottom grayscale drop-shadow-2xl"
-            />
-          </motion.div>
         </div>
+
+        {/* Photo détourée au premier plan, sans carte ni fond : elle flotte
+            directement sur le texte qui défile derrière elle, collée au
+            vrai bord bas de l'écran — comme dans l'inspiration. */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.3, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="absolute inset-x-0 bottom-0 z-10 mx-auto h-[72vh] w-[92vw] max-w-xl sm:h-[82vh] sm:w-[75vw] md:h-[94vh] md:w-[52vw] md:max-w-3xl"
+        >
+          <SmartImage
+            src={profile.portrait}
+            alt={`Portrait de ${profile.name}`}
+            label="Photo de Baptiste (hero)"
+            className="h-full w-full object-contain object-bottom grayscale drop-shadow-2xl"
+          />
+        </motion.div>
 
         <motion.a
           href="#about"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 0.6 }}
-          className="relative z-20 mb-6 flex items-center justify-end gap-2 px-6 text-xs uppercase tracking-widest text-stone md:px-10"
+          className="absolute inset-x-0 bottom-6 z-20 flex items-center justify-end gap-2 px-6 text-xs uppercase tracking-widest text-stone md:px-10"
         >
           <span className="h-8 w-px bg-stone-light" />
           Scroll down
