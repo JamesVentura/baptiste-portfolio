@@ -25,7 +25,7 @@ export function Hero() {
         {/* Showreel en fond, derrière la photo — même bande que le nom qui
             défilait avant, remplacée ici par la vidéo (en boucle, muette). */}
         {!videoFailed && (
-          <div className="absolute inset-x-0 top-1/2 h-[58vh] -translate-y-1/2 overflow-hidden sm:h-[66vh] md:h-[76vh]">
+          <div className="absolute inset-x-0 bottom-0 h-[80vh] overflow-hidden sm:h-[86vh] md:h-[92vh]">
             <video
               autoPlay
               muted
